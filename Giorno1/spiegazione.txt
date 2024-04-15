@@ -1,3 +1,12 @@
+Nell'immagine ip_Kali_Metasploitable.png l'evidenza degli ip delle VM kali e metasploitable.
+
+Nella folder sqlinj_low le schermate in ordine sequenziale relative alle operazioni SQL Injection (Blind) sulla dvwa, security level = low.
+
+
+TRACCIA BONUS:
+
+Nella folder sqlinj_medium le schermate in ordine sequenziale relative alle operazioni SQL Injection (Blind) sulla dvwa, security level = medium.
+
 Differenza tra livello low e medium caratterizzata dalla presenza o meno dei singoli apici sulla variabile $id.
 
     low --> "SELECT first_name, last_name FROM users WHERE user_id = '$id'"; 
