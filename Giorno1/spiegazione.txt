@@ -1,0 +1,28 @@
+Differenza tra livello low e medium caratterizzata dalla presenza o meno dei singoli apici sulla variabile $id.
+
+    low --> "SELECT first_name, last_name FROM users WHERE user_id = '$id'"; 
+    medium --> "SELECT first_name, last_name FROM users WHERE user_id = $id"; 
+
+Questo comporta che per le query sql inserite nell'area di testo del form è sufficiente non inserire il carattere '
+Per passare i valori nella clausola where è sufficiente quindi inserire la stringa esadecimale corripondente al valore ricercato.
+
+Esempio credit_cards=0x6372656469745f6361726473
+
+Non è possibile effettuare l'inserimento di un utente poichè la clausola UNION accoda due SELECT che devono avere lo stesso numero di campi.
+LA UNION non può essere usata con INSERT INTO. La SELECT INTO invece serve per una tabella secondaria.
+
+Inoltre la funzione mysql_query() PHP accetta solo una query da eseguire 
+(verificato nella doc ufficiale per la versione 5.4 attualemnte installata sulla metasploitable).
+
+
+RIFERIMENTI DOCUMENTAZIONE
+
+Esadecimali:
+https://dev.mysql.com/doc/refman/8.0/en/hexadecimal-literals.html
+
+UNION:
+https://www.w3schools.com/SQl/sql_union.asp
+https://dev.mysql.com/doc/refman/8.0/en/union.html
+
+PHP mysql_query():
+https://www.php.net/manual/it/function.mysql-query.php
