@@ -1,3 +1,6 @@
+SVOLTI TUTTI I BONUS (Insert user Not Available)
+
+
 Nell'immagine ip_Kali_Metasploitable.png l'evidenza degli ip delle VM kali e metasploitable.
 
 Nella folder sqlinj_low le schermate in ordine sequenziale relative alle operazioni SQL Injection (Blind) sulla dvwa, security level = low.

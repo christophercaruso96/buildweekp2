@@ -1,3 +1,5 @@
+SVOLTI TUTTI I BONUS (Livello HIGH  Not Vulnerable with XSS Stored)
+
 LIVELLO LOW 
 
     1) Necessaria modifica, lato client, sulla text area per estendere la maxlenght di Message.
