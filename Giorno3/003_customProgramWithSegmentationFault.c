@@ -1,16 +1,9 @@
 #include <stdio.h> 
 
-//COMMENTI PRESENTI SOLO NELLE MODIFICHE AL CODICE ORIGINALE 
-
-//PROTOTIPI FUNZIONI
-int get_int_value (int*); //prototipo per funzione che valida l'input utente sugli interi
-
-
-//MAIN 
 
 int main () {
 
-int vector [5], i, j, k; 
+int vector [10], i, j, k; 
 int swap_var; 
 
 
@@ -20,7 +13,11 @@ for ( i = 0 ; i < 10 ; i++)
 	{
 	int c= i+1; 
 	printf("[%d]:", c);
-	get_int_value(&vector[i]);
+	scanf ("%d", vector[i]);
+	//il valore in input recuperato dallo STDIN viene inserito nella memoria non valida
+		//non viene passato l'indirizzo con &)
+		//quindi verrà considerato come indirizzo il valore contenuto nella cella di indice i del vettore
+		//essendo inoltre tale elemento non inizializzato causa un possibile danneggiamento della memoria che porta a un errore di segmentazione.
 	}
 
 
@@ -56,17 +53,4 @@ for (j = 0; j < 10; j++)
 return 0;
 
 
-}
-
-
-//DEFINIZIONE FUNZIONI
-
-int get_int_value(int *pointer){
-        int status_scan = scanf("%d", pointer);
-        char char_trash;
-        while(status_scan < 1) {
-                printf("Input non valido!\n");
-                scanf("%c", &char_trash);
-                status_scan = scanf("%d", pointer);
-        }
 }

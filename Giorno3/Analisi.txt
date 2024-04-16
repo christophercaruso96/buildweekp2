@@ -1,0 +1,21 @@
+SVOLTI TUTTI I BONUS 
+
+
+001_originalProgramCommented.c
+
+Contiene commenti e descrizione del codice inseriti prima dell'esecuzione in laboratorio.
+
+
+
+002_customProgramWithBOF.c
+
+Contiene il codice modificato con l'inserimento di due funzioni per:
+1) validare input
+2) far scegliere all'utente il tipo di esecuzione del programma (se l'utente sceglie 2, è stata introdotta una tecnica per generare un BOF)
+
+
+003_customProgramWithSegmentationFault.c
+
+Contiene il codice originale al quale è stata fatta una piccola modifica nella scanf per generare 
+l'errore di segmentazione dopo essere stato compilato correttamente.
+
