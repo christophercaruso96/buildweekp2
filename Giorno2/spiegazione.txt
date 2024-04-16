@@ -68,7 +68,7 @@ LIVELLO MEDIUM
 
 LIVELLO HIGH
 
-Con Versione PHP superiore si può sfruttare il \\ che manterrebbe un solo \.
+Con Versione PHP differente (bug fix alla 5.5.27) si può sfruttare il \\ che manterrebbe un solo \.
 Così facendo si possono passare valori in unicode ad esempio \u{003E} che corrisponde a <.
 
 Documentazione per XSS Bypass:
