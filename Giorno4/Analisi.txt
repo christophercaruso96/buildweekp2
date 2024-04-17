@@ -1,0 +1,18 @@
+Le immagini in ordine sequenziale contengono tutti i passi per lo svolgimento della traccia.
+
+
+Ulteriori considerazioni:
+
+L'exploit sfruttato con metasploit codice CVE-2007-2447, presente sul database NIST non è stato segnalato da nessus.
+Tuttavia l'exploit è stato sfruttato con successo.
+https://nvd.nist.gov/vuln/detail/CVE-2007-2447
+
+Questo può dipendere dalla modalità di ricerca che effettua Nessus 
+all'interno dei database "linkati" per la ricerca delle common vulnerabilities.
+
+Si suggerisce quindi di effettuare la stessa scan con tool diversi per fare un merge 
+e verificare poi nella fase di exploit il risultato fornito dai Vulnerability Scanner.
+
+Inoltre nel report di Nessus viene indicata la vulnerabilità CVE-2016-2118, 
+non sono presenti exploit in metasploit/msfconsole per sfruttare tale CVE poichè probabilmente non introdotti dalla community.
+Questo significa che è buona prassi tentare l'uso di diversi tool anche per la fase di exploit.

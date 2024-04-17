@@ -19,3 +19,10 @@ Contiene il codice modificato con l'inserimento di due funzioni per:
 Contiene il codice originale al quale è stata fatta una piccola modifica nella scanf per generare 
 l'errore di segmentazione dopo essere stato compilato correttamente.
 
+
+Nella cartella other_examples sono presenti due schermate di esempio per la generazione di errori di segmentazione:
+
+Metodo 1 --> segmentation fault generato tramite BOF (BOF.c)
+Metodo 2 --> segmentation fault generato per errore di indirizzamento nella scanf (NOBOF.c)
+
+
