@@ -1,0 +1,9 @@
+SVOLTI TUTTI I BONUS 
+
+Le CVE relative al gruppo di vulnerabilità MS17-010 sono state rilevate correttamente da nessus con una scansione Custom.
+
+I bonus e le scan sono stati svolti su client XP(192.168.198.200) e 7 Pro(192.168.198.201).
+
+Per la backdoor si può usare l'exploit persistence in combo con l'exploit handler.
+Ho preferito mostrare la creazione di un eseguibile che apre una shell DOS verso un ip:porta remoto.
+L'exe è stato creato con msfvenom e se appeso ad uno scheduler mantiene una backdoor persistente.
