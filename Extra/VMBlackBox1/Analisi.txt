@@ -1,0 +1,16 @@
+Gli step eseguiti consistono in:
+- Ip discovery con nmap
+- Enumerazione servizi con nmap
+- Vulnerability Scan con Nessus
+- Fase exploit
+
+Ho sfruttato l'accesso anonymous abilitato, identificato sia da Nessus sia da nmap (con switch -A).
+Ho trovato una lista di utenti nella cartella public.
+
+Ho provato un bruteforce con hydra, 
+perdendo ore prima di capire che si bloccava perchè solo root e anne erano utenti abilitati ad accedere con password 
+(anche nessus notifica a livello info l'accesso con password abilitato).
+
+Ho perso diverso tempo provando con file di password diversi e all'ultimo era da usare il file rockyou (quello che ho scartato per la quantità di password).
+
+Trovando la password di anne, dopo aver effettuato l'accesso ssh, con sudo su ho ottenuto i privilegi di root. 
